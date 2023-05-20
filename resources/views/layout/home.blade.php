@@ -46,7 +46,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}app-assets/css/core/menu/menu-types/horizontal-menu.css">
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}app-assets/css/plugins/forms/form-quill-editor.css">
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}app-assets/css/pages/page-blog.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <!-- END: Head-->
 
@@ -137,6 +137,14 @@
                 </li>
                 <li class=" nav-item @if(URL::current() == URL::to('/admin/hrd')) active @elseif(URL::current() == URL::to('/admin/hrd/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.hrd')}}"><i data-feather="trello"></i><span class="menu-title text-truncate" data-i18n="HRD">HRD</span></a>
                 </li>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/employee')) active @elseif(URL::current() == URL::to('/admin/employee/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.employee')}}"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Karyawan">Karyawan</span></a>
+                </li>
+
+                <li class=" navigation-header"><span data-i18n="Product Management">Product Management</span><i data-feather="more-horizontal"></i>
+                </li>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/product')) active @elseif(URL::current() == URL::to('/admin/product/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.product')}}"><i data-feather="box"></i><span class="menu-title text-truncate" data-i18n="Asuransi">Asuransi</span></a>
+                </li>
+                
             </ul>   
         </div>
     </div>
@@ -165,7 +173,7 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
-        <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; @php echo date('Y') @endphp<a class="ml-25 text-primary" href="#" target="_blank">Briliant Study Centre</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span></p>
+        <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; @php echo date('Y') @endphp<a class="ml-25 text-primary" href="#" target="_blank">PasarPolis</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span></p>
     </footer>
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
     <!-- END: Footer-->

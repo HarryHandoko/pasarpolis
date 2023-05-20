@@ -689,8 +689,8 @@ footer.footer-border {
 }
 
 .main-menu.menu-light .navigation > li.active > a {
-  background : -webkit-linear-gradient(332deg, #4eaef7, rgba(93, 174, 245, 0.7));
-  background :         linear-gradient(118deg, #4eaef7, rgba(93, 174, 245, 0.7));
+  background : -webkit-linear-gradient(332deg, hsl(43, 91%, 64%), hsl(43, 91%, 64%));
+  background :         linear-gradient(118deg, hsl(43, 91%, 64%), hsl(43, 91%, 64%));
   box-shadow : 0 0 10px 1px rgba(115, 103, 240, 0.7);
   color : #FFFFFF;
   font-weight : 400;
