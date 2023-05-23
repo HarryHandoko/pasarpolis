@@ -47,6 +47,11 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}app-assets/css/plugins/forms/form-quill-editor.css">
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}app-assets/css/pages/page-blog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .zoom:hover {
+          transform: scale(10); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
 </head>
 <!-- END: Head-->
 
@@ -92,6 +97,12 @@
                     if (auth()->user()->role_id == '1') {
                         $dataUser = App\Models\Admin::where('users_id',auth()->user()->id)->first();
                         $role = App\Models\Role::where('id',auth()->user()->role_id)->first();
+                    }else if (auth()->user()->role_id == '2') {
+                        $dataUser = App\Models\HRD::where('users_id',auth()->user()->id)->first();
+                        $role = App\Models\Role::where('id',auth()->user()->role_id)->first();
+                    }else {
+                        $dataUser = App\Models\Employee::where('users_id',auth()->user()->id)->first();
+                        $role = App\Models\Role::where('id',auth()->user()->role_id)->first();
                     }
                 @endphp
                 <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -128,6 +139,8 @@
                 <li class=" nav-item @if(URL::current() == URL::to('/admin')) active @elseif(URL::current() == URL::to('/admin/dashboard')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.dashboard')}}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboard">Dashboard</span></a>
                 </li>
 
+                @if (auth()->user()->role_id == '1')
+
                 <li class=" navigation-header"><span data-i18n="User Management">User Management</span><i data-feather="more-horizontal"></i>
                 </li>
                 
@@ -144,6 +157,23 @@
                 </li>
                 <li class=" nav-item @if(URL::current() == URL::to('/admin/product')) active @elseif(URL::current() == URL::to('/admin/product/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.product')}}"><i data-feather="box"></i><span class="menu-title text-truncate" data-i18n="Asuransi">Asuransi</span></a>
                 </li>
+
+                @elseif (auth()->user()->role_id == '2')
+                <li class=" navigation-header"><span data-i18n="Polis Management">Polis Management</span><i data-feather="more-horizontal"></i>
+                </li>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/employee')) active @elseif(URL::current() == URL::to('/admin/employee/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.employee')}}"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Karyawan">Karyawan</span></a>
+                </li>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/payment_page')) active @elseif(URL::current() == URL::to('/admin/payment_page/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.payment')}}"><i data-feather="dollar-sign"></i><span class="menu-title text-truncate" data-i18n="Pembayaran Polis">Pembayaran Polis</span></a>
+                </li>
+                <li class=" nav-item "><a class="d-flex align-items-center shadow-none" href="#"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Laporan Klaim">Laporan Klaim</span></a>
+                </li>
+
+                @else
+                <li class=" navigation-header"><span data-i18n="Polis Management">Polis Management</span><i data-feather="more-horizontal"></i>
+                </li>
+                <li class=" nav-item "><a class="d-flex align-items-center shadow-none" href="#"><i data-feather="server"></i><span class="menu-title text-truncate" data-i18n="Klaim Saya">Klaim Saya</span></a>
+                </li>
+                @endif
                 
             </ul>   
         </div>

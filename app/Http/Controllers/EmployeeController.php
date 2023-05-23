@@ -12,13 +12,18 @@ use App\Models\Employee;
 use App\Models\Product;
 use App\Models\EmployeeProduct;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class EmployeeController extends Controller
 {
     public function index()
     {
-        $data['data'] = Employee::get();
+        if(Auth::user()->role_id == '1'){
+            $data['data'] = Employee::get();
+        }else{
+            $data['data'] = Employee::where('hrd_id',HRD::where('users_id',auth()->user()->id)->first()->id)->get();
+        }
         return view('employee.index',$data);
     }
 
@@ -35,6 +40,7 @@ class EmployeeController extends Controller
         $request->validate([
             'name' => 'required',
             'alamat' => 'required',
+            'jabatan' => 'required',
             'tanggal_lahir' => 'required',
             'no_handphone' => 'required|numeric|unique:employees,no_handphone',
             'email' => 'required|email|unique:users,email',
@@ -56,13 +62,19 @@ class EmployeeController extends Controller
             $hrd_id = HRD::where('users_id',auth()->user()->id)->first()->id;
         }
 
+        //noPolis 
+        $noPolis = date('Ymd').'-'.substr("00000",0,5-strlen($hrd_id)).$hrd_id.'-'.substr("00000",0,5-strlen(Employee::where('hrd_id',$hrd_id)->count()+1)).Employee::where('hrd_id',$hrd_id)->count()+1;
+
+
         $emp_id =  DB::table('employees')->insertGetID([
             'hrd_id' => $hrd_id,
+            'no_polis' => $noPolis,
             'users_id' => "$getID",
             'name' => $request->name,
             'tanggal_lahir' => $request->tanggal_lahir,
             'alamat' => $request->alamat,
             'no_handphone' => $request->no_handphone,
+            'jabatan' => $request->jabatan,
             'created_at' => date('Y-m-d H:i:s')
         ]);
 
@@ -93,6 +105,7 @@ class EmployeeController extends Controller
         $request->validate([
             'name' => 'required',
             'alamat' => 'required',
+            'jabatan' => 'required',
             'tanggal_lahir' => 'required',
             'no_handphone' => 'required|numeric|unique:employees,no_handphone',
             'email' => 'required|email|unique:users,email',
@@ -132,6 +145,7 @@ class EmployeeController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
             'alamat' => $request->alamat,
             'no_handphone' => $request->no_handphone,
+            'jabatan' => $request->jabatan,
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 

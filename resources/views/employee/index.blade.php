@@ -10,22 +10,24 @@
         <x-slot name="thead">
             <tr>
                 <th style="max-width: 10px">#</th>
+                <th style="min-width: 165px">No Polis</th>
                 <th>Nama</th>
+                <th>Jabatan</th>
                 <th>Nama Perusahaan</th>
                 <th>Email</th>
-                <th>No Handphone</th>
                 <th>Asuransi</th>
                 <th>Status</th>
-                <th style="max-width: 40px">Actions</th>
+                <th class="fixed" style="max-width: 40px">Actions</th>
             </tr>
         </x-slot>
         <x-slot name="tbody">
             @foreach ($data as $key => $item)
                     <tr>
                         <td>{{ $key+1 }}</td>
+                        <td>{{ $item->no_polis }}</td>
                         <td>{{ $item->name }}</td>
+                        <td>{{ $item->jabatan }}</td>
                         <td>{{ $item->hrd->office_name }}</td>
-                        <td>{{ $item->no_handphone }}</td>
                         <td>{{ $item->users->email }}</td>
                         <td>{{ $item->empProduct->product->name }}</td>
                         <td>{{ $item->empProduct->status_asuransi }}</td>

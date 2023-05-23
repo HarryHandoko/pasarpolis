@@ -44,6 +44,18 @@
                 <label for="tanggal_lahir">Tanggal Lahir</label>
                 <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="@if($data == null){{ old('tanggal_lahir') }}@else{{$data->tanggal_lahir}}@endif" autocomplete="false" placeholder="Tanggal Lahir" required>
             </div>
+            <div class="col">
+                <label for="jabatan">Jabatan</label>
+                <select name="jabatan" id="jabatan" class="form-control" required>
+                    <option @if($data == null) @if(old('jabatan') == 'Manager') selected @endif @else @if($data->jabatan == 'Manager') selected @endif @endif value="Manager">Manager</option>
+                    <option @if($data == null) @if(old('jabatan') == 'HRD') selected @endif @else @if($data->jabatan == 'HRD') selected @endif @endif value="HRD">HRD</option>
+                    <option @if($data == null) @if(old('jabatan') == 'Staff') selected @endif @else @if($data->jabatan == 'Staff') selected @endif @endif value="Staff">Staff</option>
+                    <option @if($data == null) @if(old('jabatan') == 'Finance') selected @endif @else @if($data->jabatan == 'Finance') selected @endif @endif value="Finance">Finance</option>
+                    <option @if($data == null) @if(old('jabatan') == 'Supervisor') selected @endif @else @if($data->jabatan == 'Supervisor') selected @endif @endif value="Supervisor">Supervisor</option>
+                    <option @if($data == null) @if(old('jabatan') == 'Resepsionist') selected @endif @else @if($data->jabatan == 'Resepsionist') selected @endif @endif value="Resepsionist">Resepsionist</option>
+                    <option @if($data == null) @if(old('jabatan') == 'Lain-Lain') selected @endif @else @if($data->jabatan == 'Lain-Lain') selected @endif @endif value="Lain-Lain">Lain-Lain</option>
+                </select>
+            </div>
         </div>
     
         <div class="row mt-1">
@@ -111,7 +123,7 @@
         <div class="row">
             <div class="col texxt-right">
                 <button type="submit" class="btn btn-warning">Simpan</button>
-                <a href="{{ route('admin.admin') }}" class="btn btn-secondary" data-dismiss="modal">Batal</a>    
+                <a href="{{ route('admin.employee') }}" class="btn btn-secondary" data-dismiss="modal">Batal</a>    
             </div>    
         </div>  
     </form>

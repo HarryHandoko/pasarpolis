@@ -9,6 +9,7 @@ use App\Http\Controllers\HRDController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductBenefitController;
+use App\Http\Controllers\PaymentController;
 
 
 
@@ -67,5 +68,10 @@ Route::prefix('/admin')->group(function () {
         Route::post('/product/benefit/store', [ProductBenefitController::class, 'store'])->name('admin.product_benefit.store');
         Route::get('/product/benefit/edit/{id}', [ProductBenefitController::class, 'edit'])->name('admin.product_benefit.edit');
         Route::put('/product/benefit/update/{id}', [ProductBenefitController::class, 'update'])->name('admin.product_benefit.update');
+
+
+        //payment
+        Route::get('/payment_page', [PaymentController::class, 'index'])->name('admin.payment');
+        Route::POST('/payment_page/store', [PaymentController::class, 'store'])->name('admin.payment.store');
     });
 });
