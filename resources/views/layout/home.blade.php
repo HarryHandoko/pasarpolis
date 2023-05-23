@@ -48,9 +48,22 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}app-assets/css/pages/page-blog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        .zoom:hover {
-          transform: scale(10); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        figure.zoom {
+            background-position: 50% 50%;
+            position: relative;
+            width: 500px;
+            overflow: hidden;
+            cursor: zoom-in;
         }
+        figure.zoom img:hover {
+            opacity: 0;
+        }
+        figure.zoom img {
+            transition: opacity .5s;
+            display: block;
+            width: 100%;
+        }
+
     </style>
 </head>
 <!-- END: Head-->
@@ -156,6 +169,11 @@
                 <li class=" navigation-header"><span data-i18n="Product Management">Product Management</span><i data-feather="more-horizontal"></i>
                 </li>
                 <li class=" nav-item @if(URL::current() == URL::to('/admin/product')) active @elseif(URL::current() == URL::to('/admin/product/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.product')}}"><i data-feather="box"></i><span class="menu-title text-truncate" data-i18n="Asuransi">Asuransi</span></a>
+                </li>
+
+                <li class=" navigation-header"><span data-i18n="Payment Management">Payment Management</span><i data-feather="more-horizontal"></i>
+                </li>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/payment_list')) active @elseif(URL::current() == URL::to('/admin/payment_list/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.paymentlist')}}"><i data-feather="dollar-sign"></i><span class="menu-title text-truncate" data-i18n="Payment List">Payment List</span></a>
                 </li>
 
                 @elseif (auth()->user()->role_id == '2')

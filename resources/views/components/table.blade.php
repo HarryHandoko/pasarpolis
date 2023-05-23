@@ -22,9 +22,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <a href="{{ $urlAdd ?? null }}" class="btn btn-warning"  ><i data-feather="plus"></i>Add Data</a>
-                    </div>
+                    @if($urlAdd != 'null')
+                        <div class="col-4">
+                            <a href="{{ $urlAdd ?? null }}" class="btn btn-warning"  ><i data-feather="plus"></i>Add Data</a>
+                        </div>
+                    @endif
+                    
                 </div>
             </div>
         </div>

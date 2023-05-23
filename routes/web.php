@@ -10,6 +10,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductBenefitController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentListController;
 
 
 
@@ -73,5 +74,9 @@ Route::prefix('/admin')->group(function () {
         //payment
         Route::get('/payment_page', [PaymentController::class, 'index'])->name('admin.payment');
         Route::POST('/payment_page/store', [PaymentController::class, 'store'])->name('admin.payment.store');
+
+        //paymentAdmin
+        Route::get('/payment_list', [PaymentListController::class, 'index'])->name('admin.paymentlist');
+        Route::get('/payment_list/edit/{id}/{status}/{bulan}', [PaymentListController::class, 'update'])->name('admin.paymentlist.update');
     });
 });

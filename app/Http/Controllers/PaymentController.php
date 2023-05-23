@@ -49,6 +49,8 @@ class PaymentController extends Controller
         ->select('*',DB::raw('sum(total) as totals'))
         ->where('hrd_id',HRD::where('users_id',auth()->user()->id)->first()->id)
         ->groupBy('pembayaran_bulan')
+        ->groupBy('tanggal')
+        ->groupBy('hrd_id')
         ->get();
 
         return view('payment.index',$data);

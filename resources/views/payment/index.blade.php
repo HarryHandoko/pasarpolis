@@ -145,7 +145,12 @@
                                                 <td>{{ date('F',strtotime('2023-'.$item->pembayaran_bulan.'-01')) }}</td>
                                                 <td>Rp. {{ number_format($item->totals) }}</td>
                                                 <td>{{ date('d F Y',strtotime($item->tanggal)) }}</td>
-                                                <td><img style="width:50px;" class="zoom" height="auto" src="{{ $item->bukti_transfer }}" alt="{{ date('F',strtotime('2023-'.$item->pembayaran_bulan.'-01')) }}"></td>
+                                                <td>
+                                                    {{-- <img style="width:50px;" class="zoom" onmousemove="zoom(event)" height="auto" src="{{ $item->bukti_transfer }}" alt="{{ date('F',strtotime('2023-'.$item->pembayaran_bulan.'-01')) }}"> --}}
+                                                    <figure class="zoom" onmousemove="zoom(event)" style="background-image: url('{{ $item->bukti_transfer }}'); width:250px" height="auto">
+                                                        <img src="{{ $item->bukti_transfer }}" />
+                                                    </figure>   
+                                                </td>
                                                 <td>{{ $item->status_pembayaran }}</td>
                                             </tr>
                                         @endforeach
@@ -179,5 +184,16 @@
         })
     </script>
     @endif
+
+    <script>
+        function zoom(e){
+            var zoomer = e.currentTarget;
+            e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX
+            e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX
+            x = offsetX/zoomer.offsetWidth*100
+            y = offsetY/zoomer.offsetHeight*100
+            zoomer.style.backgroundPosition = x + '% ' + y + '%';
+        }
+    </script>
         
 @endpush
