@@ -37,6 +37,11 @@
                                 <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ route('admin.employee.edit',$item->id) }}" ><i data-feather="eye"></i> Lihat Detail</a>
                                 <a class="dropdown-item" href="#" onclick="deletes({{ $item->id }})" ><i data-feather="trash"></i> Hapus</a>
+                                <hr>
+                                @if (auth()->user()->role_id == '1')
+                                <a class="dropdown-item" href="#" onclick="statusPembayaran({{ $item->id }},'Aktif')" ><i data-feather="check"></i> Aktif</a>
+                                <a class="dropdown-item" href="#" onclick="statusPembayaran({{ $item->id }},'Tidak Aktif')" ><i data-feather="x"></i> Tidak Aktif</a>
+                                @endif
                             </div>
                         </td>
                     </tr>   
@@ -78,6 +83,28 @@
                 }
             })
         }
+</script>
+
+<script>
+    function statusPembayaran(id,status) {
+        Swal.fire({
+            title: 'Apakah anda Me-'+status+' Data Ini ?',
+            text: "Menghapus data bersifat permanent hati-hati!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal',
+            }).then((result) => {
+            if (result.isConfirmed) {
+                var url = '{{ route("admin.employee.updateStatus", ["id"=>":id","status"=>":status"]) }}';
+                url = url.replace(':id', id);
+                url = url.replace(':status', status);
+                window.location=url;
+            }
+        })
+    }
 </script>
     
 @endpush

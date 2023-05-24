@@ -51,6 +51,7 @@ Route::prefix('/admin')->group(function () {
         Route::get('/employee/form', [EmployeeController::class, 'add'])->name('admin.employee.add');
         Route::post('/employee/store', [EmployeeController::class, 'store'])->name('admin.employee.store');
         Route::put('/employee/update/{id}', [EmployeeController::class, 'update'])->name('admin.employee.update');
+        Route::get('/employee/updateStatus/{id}/{status}', [EmployeeController::class, 'updateStatus'])->name('admin.employee.updateStatus');
         Route::get('/employee/edit/{id}', [EmployeeController::class, 'edit'])->name('admin.employee.edit');
         Route::get('/employee/delete/{id}', [EmployeeController::class, 'delete'])->name('admin.employee.delete');
 

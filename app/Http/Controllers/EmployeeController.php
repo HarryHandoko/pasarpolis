@@ -165,4 +165,14 @@ class EmployeeController extends Controller
         Employee::where('id',$id)->delete();
         return redirect()->route('admin.employee')->with('status', 'Akun Berhasil diHapus!');
     }
+
+    public function updateStatus($id,$status)
+    {
+        $data = Employee::findOrFail($id);
+        EmployeeProduct::where('employee_id',$data->id)
+        ->update([
+            'status_asuransi' => $status
+        ]);
+        return redirect()->route('admin.employee')->with('status', 'Status Berhasil Di Update!');
+    }
 }
