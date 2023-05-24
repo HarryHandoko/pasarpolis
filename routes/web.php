@@ -11,7 +11,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductBenefitController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentListController;
+use App\Http\Controllers\Website\HomesController;
 
+
+//website
+
+Route::get('/', [HomesController::class, 'index'])->name('home');
 
 
 Route::prefix('/admin')->group(function () {
