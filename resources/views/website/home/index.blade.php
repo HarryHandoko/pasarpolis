@@ -11,7 +11,7 @@
         PasarPolis Employee Benefit, hadir untuk memberikan rasa aman untuk karyawan anda secara praktis dan transparan dengan harga terjangkau.
       </p>
 
-      <button class="btn btn-warning w-50" style="border-radius:20px"><b>Get Started</b></button>
+      <a href="{{ route('tentang') }}" class="btn btn-warning w-50" style="border-radius:20px"><b>Get Started</b></a>
 
     </div>
     <div class="col">

@@ -18,7 +18,7 @@ use App\Http\Controllers\Website\HomesController;
 
 Route::get('/', [HomesController::class, 'index'])->name('home');
 Route::get('/tentang-kami', [HomesController::class, 'tentang'])->name('tentang');
-
+Route::get('/produk-kami', [HomesController::class, 'productKami'])->name('product_kami');
 Route::get('/cara-klaim', [HomesController::class, 'caraKlaim'])->name('cara_klaim');
 Route::get('/faq', [HomesController::class, 'Faq'])->name('faq');
 

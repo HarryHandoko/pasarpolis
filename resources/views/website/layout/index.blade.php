@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,1000;1,800&display=swap');
       .owl-carousel .owl-item img {
@@ -76,7 +77,7 @@
               <a class="nav-link" href="{{ route('tentang') }}" style="color:orange"><b>Tentang Kami</b></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="color:orange"><b>Produk Kami</b></a>
+              <a class="nav-link" href="{{ route('product_kami') }}" style="color:orange"><b>Produk Kami</b></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('cara_klaim') }}" style="color:orange"><b>Cara Klaim</b></a>
@@ -86,7 +87,7 @@
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-warning my-2 my-sm-0" >Sign In/Sign Up</button>
+            <button class="btn btn-outline-warning my-2 my-sm-0" ><b>Sign In/Sign Up</b></button>
           </form>
         </div>
       </nav>

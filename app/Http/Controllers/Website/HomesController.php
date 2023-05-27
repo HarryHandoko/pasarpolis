@@ -16,6 +16,11 @@ class HomesController extends Controller
         return view('website.home.index');
     }
 
+    public function productKami()
+    {
+        return view('website.product_kami.index');
+    }
+
     public function tentang()
     {
         return view('website.tentang_kami.index');
