@@ -87,7 +87,7 @@
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-warning my-2 my-sm-0" ><b>Sign In/Sign Up</b></button>
+            <a href="{{ route('signup') }}" class="btn btn-outline-warning my-2 my-sm-0" ><b>Sign In/Sign Up</b></a>
           </form>
         </div>
       </nav>

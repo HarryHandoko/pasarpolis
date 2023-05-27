@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductBenefitController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentListController;
 use App\Http\Controllers\Website\HomesController;
+use App\Http\Controllers\Website\SignUpController;
 
 
 //website
@@ -21,6 +22,11 @@ Route::get('/tentang-kami', [HomesController::class, 'tentang'])->name('tentang'
 Route::get('/produk-kami', [HomesController::class, 'productKami'])->name('product_kami');
 Route::get('/cara-klaim', [HomesController::class, 'caraKlaim'])->name('cara_klaim');
 Route::get('/faq', [HomesController::class, 'Faq'])->name('faq');
+
+
+Route::get('/signup', [SignUpController::class, 'index'])->name('signup');
+Route::post('/register', [SignUpController::class, 'register'])->name('register');
+Route::get('/register-success', [SignUpController::class, 'successRegister'])->name('success_register');
 
 
 Route::prefix('/admin')->group(function () {
