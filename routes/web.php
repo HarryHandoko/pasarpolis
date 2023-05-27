@@ -17,6 +17,10 @@ use App\Http\Controllers\Website\HomesController;
 //website
 
 Route::get('/', [HomesController::class, 'index'])->name('home');
+Route::get('/tentang-kami', [HomesController::class, 'tentang'])->name('tentang');
+
+Route::get('/cara-klaim', [HomesController::class, 'caraKlaim'])->name('cara_klaim');
+Route::get('/faq', [HomesController::class, 'Faq'])->name('faq');
 
 
 Route::prefix('/admin')->group(function () {

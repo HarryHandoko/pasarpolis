@@ -16,4 +16,18 @@ class HomesController extends Controller
         return view('website.home.index');
     }
 
+    public function tentang()
+    {
+        return view('website.tentang_kami.index');
+    }
+
+    public function caraKlaim()
+    {
+        return view('website.cara_klaim.index');
+    }
+
+    public function Faq()
+    {
+        return view('website.faq.index');
+    }
 }
