@@ -137,4 +137,14 @@ class HRDController extends Controller
         HRD::where('id',$id)->delete();
         return redirect()->route('admin.hrd')->with('status', 'Akun Berhasil diHapus!');
     }
+
+    public function updateStatus($id,$status)
+    {
+        $data = HRD::findOrFail($id);
+        HRD::where('id',$data->id)
+        ->update([
+            'status' => $status
+        ]);
+        return redirect()->route('admin.hrd')->with('status', 'Status Berhasil Di Update!');
+    }
 }

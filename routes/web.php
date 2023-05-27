@@ -58,6 +58,7 @@ Route::prefix('/admin')->group(function () {
         Route::get('/hrd/form', [HRDController::class, 'add'])->name('admin.hrd.add');
         Route::post('/hrd/store', [HRDController::class, 'store'])->name('admin.hrd.store');
         Route::put('/hrd/update/{id}', [HRDController::class, 'update'])->name('admin.hrd.update');
+        Route::get('/hrd/updateStatus/{id}/{status}', [HRDController::class, 'updateStatus'])->name('admin.hrd.updateStatus');
         Route::get('/hrd/edit/{id}', [HRDController::class, 'edit'])->name('admin.hrd.edit');
         Route::get('/hrd/delete/{id}', [HRDController::class, 'delete'])->name('admin.hrd.delete');
 
