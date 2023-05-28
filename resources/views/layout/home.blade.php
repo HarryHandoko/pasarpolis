@@ -176,6 +176,10 @@
                 <li class=" nav-item @if(URL::current() == URL::to('/admin/payment_list')) active @elseif(URL::current() == URL::to('/admin/payment_list/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.paymentlist')}}"><i data-feather="dollar-sign"></i><span class="menu-title text-truncate" data-i18n="Payment List">Payment List</span></a>
                 </li>
 
+                <li class=" navigation-header"><span data-i18n="Claim Management">Claim Management</span><i data-feather="more-horizontal"></i>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/claim-request-list')) active @elseif(URL::current() == URL::to('/admin/claim-request-list/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.claim_request_list')}}"><i data-feather="credit-card"></i><span class="menu-title text-truncate" data-i18n="Claim Request">Claim Request</span></a>
+                </li>
+
                 @elseif (auth()->user()->role_id == '2')
                 <li class=" navigation-header"><span data-i18n="Polis Management">Polis Management</span><i data-feather="more-horizontal"></i>
                 </li>

@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductBenefitController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentListController;
 use App\Http\Controllers\ClaimController;
+use App\Http\Controllers\ClaimAdminController;
 use App\Http\Controllers\Website\HomesController;
 use App\Http\Controllers\Website\SignUpController;
 
@@ -80,10 +81,14 @@ Route::prefix('/admin')->group(function () {
             Route::get('/product/benefit/edit/{id}', [ProductBenefitController::class, 'edit'])->name('admin.product_benefit.edit');
             Route::put('/product/benefit/update/{id}', [ProductBenefitController::class, 'update'])->name('admin.product_benefit.update');
 
-            
             //paymentAdmin
             Route::get('/payment_list', [PaymentListController::class, 'index'])->name('admin.paymentlist');
             Route::get('/payment_list/edit/{id}/{status}/{bulan}', [PaymentListController::class, 'update'])->name('admin.paymentlist.update');
+            
+            //ClaimRequest
+            Route::get('/claim-request-list', [ClaimAdminController::class, 'index'])->name('admin.claim_request_list');
+            Route::get('/claim-request-list/update/{id}/{status}', [ClaimAdminController::class, 'update'])->name('admin.claim_request_list.update');
+            Route::POST('/claim-request-list/update-total', [ClaimAdminController::class, 'updateTolak'])->name('admin.claim_request_list.updateTolak');
         });
 
         Route::middleware('RoleAdminHRD')->group(function () {
