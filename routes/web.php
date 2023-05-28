@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductBenefitController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentListController;
+use App\Http\Controllers\ClaimController;
 use App\Http\Controllers\Website\HomesController;
 use App\Http\Controllers\Website\SignUpController;
 
@@ -95,5 +96,11 @@ Route::prefix('/admin')->group(function () {
         //paymentAdmin
         Route::get('/payment_list', [PaymentListController::class, 'index'])->name('admin.paymentlist');
         Route::get('/payment_list/edit/{id}/{status}/{bulan}', [PaymentListController::class, 'update'])->name('admin.paymentlist.update');
+
+
+        
+        //claim
+        Route::get('/form-claim', [ClaimController::class, 'index'])->name('admin.form-claim');
+        Route::post('/form-claim/store', [ClaimController::class, 'store'])->name('admin.form-claim.store');
     });
 });

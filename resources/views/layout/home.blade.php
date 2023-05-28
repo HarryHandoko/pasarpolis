@@ -189,7 +189,7 @@
                 @else
                 <li class=" navigation-header"><span data-i18n="Polis Management">Polis Management</span><i data-feather="more-horizontal"></i>
                 </li>
-                <li class=" nav-item "><a class="d-flex align-items-center shadow-none" href="#"><i data-feather="server"></i><span class="menu-title text-truncate" data-i18n="Klaim Saya">Klaim Saya</span></a>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/form-claim')) active @elseif(URL::current() == URL::to('/admin/form-claim/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{ route('admin.form-claim') }}"><i data-feather="server"></i><span class="menu-title text-truncate" data-i18n="Klaim Saya">Klaim Saya</span></a>
                 </li>
                 @endif
                 
