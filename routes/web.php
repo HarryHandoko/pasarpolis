@@ -13,6 +13,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentListController;
 use App\Http\Controllers\ClaimController;
 use App\Http\Controllers\ClaimAdminController;
+use App\Http\Controllers\CloseInsuranceRequestController;
 use App\Http\Controllers\Website\HomesController;
 use App\Http\Controllers\Website\SignUpController;
 
@@ -89,6 +90,10 @@ Route::prefix('/admin')->group(function () {
             Route::get('/claim-request-list', [ClaimAdminController::class, 'index'])->name('admin.claim_request_list');
             Route::get('/claim-request-list/update/{id}/{status}', [ClaimAdminController::class, 'update'])->name('admin.claim_request_list.update');
             Route::POST('/claim-request-list/update-total', [ClaimAdminController::class, 'updateTolak'])->name('admin.claim_request_list.updateTolak');
+
+            //CloseInsuranceRequest
+            Route::get('/close-insurance-request', [CloseInsuranceRequestController::class, 'index'])->name('admin.close_insurance_req');
+            Route::get('/close-insurance-request/edit/{id}/{status}', [CloseInsuranceRequestController::class, 'update'])->name('admin.close_insurance_req.update');
         });
 
         Route::middleware('RoleAdminHRD')->group(function () {
@@ -98,6 +103,7 @@ Route::prefix('/admin')->group(function () {
             Route::post('/employee/store', [EmployeeController::class, 'store'])->name('admin.employee.store');
             Route::put('/employee/update/{id}', [EmployeeController::class, 'update'])->name('admin.employee.update');
             Route::get('/employee/updateStatus/{id}/{status}', [EmployeeController::class, 'updateStatus'])->name('admin.employee.updateStatus');
+            Route::get('/employee/reqCloseInsurance/{id}', [EmployeeController::class, 'reqCloseInsurance'])->name('admin.employee.reqCloseInsurance');
             Route::get('/employee/edit/{id}', [EmployeeController::class, 'edit'])->name('admin.employee.edit');
             Route::get('/employee/delete/{id}', [EmployeeController::class, 'delete'])->name('admin.employee.delete');
         });

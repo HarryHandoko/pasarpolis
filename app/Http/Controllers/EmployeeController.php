@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Employee;
 use App\Models\Product;
 use App\Models\EmployeeProduct;
+use App\Models\CloseInsuranceRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -174,5 +175,21 @@ class EmployeeController extends Controller
             'status_asuransi' => $status
         ]);
         return redirect()->route('admin.employee')->with('status', 'Status Berhasil Di Update!');
+    }
+
+    public function reqCloseInsurance($id)
+    {
+        $data = Employee::findOrFail($id);
+        EmployeeProduct::where('employee_id',$data->id)
+        ->update([
+            'status_asuransi' => 'Proses Penutupan Polis'
+        ]);
+        CloseInsuranceRequest::insert([
+            'employee_id' => $id,
+            'date' => date('Y-m-d'),
+            'status' => 'Menunggu Konfirmasi',
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+        return redirect()->route('admin.employee')->with('status', 'PErmintaan Penutupan Polis Berhasil Dikirim!');
     }
 }

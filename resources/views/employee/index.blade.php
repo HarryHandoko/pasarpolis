@@ -42,6 +42,12 @@
                                 <a class="dropdown-item" href="#" onclick="statusPembayaran({{ $item->id }},'Aktif')" ><i data-feather="check"></i> Aktif</a>
                                 <a class="dropdown-item" href="#" onclick="statusPembayaran({{ $item->id }},'Tidak Aktif')" ><i data-feather="x"></i> Tidak Aktif</a>
                                 @endif
+
+                                @if (auth()->user()->role_id == '2')
+                                    @if ($item->empProduct->status_asuransi != 'Proses Penutupan Polis' && $item->empProduct->status_asuransi != 'Tidak Aktif')
+                                        <a class="dropdown-item" href="#" onclick="reqCloseInsurance({{ $item->id }})" ><i data-feather="slash"></i> Tutup Polis</a>
+                                    @endif
+                                @endif
                             </div>
                         </td>
                     </tr>   
@@ -101,6 +107,28 @@
                 var url = '{{ route("admin.employee.updateStatus", ["id"=>":id","status"=>":status"]) }}';
                 url = url.replace(':id', id);
                 url = url.replace(':status', status);
+                window.location=url;
+            }
+        })
+    }
+</script>
+
+
+<script>
+    function reqCloseInsurance(id) {
+        Swal.fire({
+            title: 'Apakah anda Menutup Polis Ini ?',
+            text: "Menutup data bersifat permanent hati-hati!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal',
+            }).then((result) => {
+            if (result.isConfirmed) {
+                var url = '{{ route("admin.employee.reqCloseInsurance", ["id"=>":id"]) }}';
+                url = url.replace(':id', id);
                 window.location=url;
             }
         })

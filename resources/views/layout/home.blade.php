@@ -170,6 +170,9 @@
                 </li>
                 <li class=" nav-item @if(URL::current() == URL::to('/admin/product')) active @elseif(URL::current() == URL::to('/admin/product/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.product')}}"><i data-feather="box"></i><span class="menu-title text-truncate" data-i18n="Asuransi">Asuransi</span></a>
                 </li>
+                
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/close-insurance-request')) active @elseif(URL::current() == URL::to('/admin/close-insurance-request/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.close_insurance_req')}}"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Permintaan Penutupan Polis">Permintaan Penutupan Polis</span></a>
+                </li>
 
                 <li class=" navigation-header"><span data-i18n="Payment Management">Payment Management</span><i data-feather="more-horizontal"></i>
                 </li>
