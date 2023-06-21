@@ -22,6 +22,7 @@
                     <th style="min-width:250px">Akun Bank</th>
                     <th style="min-width:250px">Nama Claim Benefit</th>
                     <th style="min-width:250px">Tanggal Request</th>
+                    <th style="min-width:250px">Jumlah Claim</th>
                     <th style="min-width:150px">Kwitansi</th>
                     <th style="min-width:250px">Status Claim Anda</th>
                     <th>Action</th>
@@ -34,6 +35,7 @@
                             <td>{{ $item->no_rekening }} / {{ $item->name_bank }} ({{ $item->bank }})</td>
                             <td>{{ $item->productBenefit->name }}</td>
                             <td>{{ date('d F Y',strtotime($item->tanggal)) }}</td>
+                            <td>Rp. {{ number_format($item->jumlah_claim) }}</td>
                             <td><button class="btn btn-warning" onclick="viewKwitansi('{{ $item->kwitansi }}')" data-toggle="modal" data-target="#staticBackdrop">View Kwitnasi</button></td>
                             <td>{{ $item->status }}</td>
                             <td>

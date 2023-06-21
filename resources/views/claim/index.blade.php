@@ -48,6 +48,12 @@
                         </div>
                         <div class="row mt-1">
                             <div class="col">
+                                <label for="jumlah_claim">Jumlah Klaim Rp.</label>
+                                <input type="text" class="form-control" id="jumlah_claim" name="jumlah_claim" value="{{ old('jumlah_claim') }}" autocomplete="false" placeholder="Jumlah Klaim Rp." required>
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col">
                                 <label>Upload Kwitansi</label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="customFile" name="kwitansi" accept="application/pdf">
@@ -68,7 +74,10 @@
                                        <div class="card border shadow-lg p-1 benefit" style="cursor:pointer" id="{{$item_benefit->id}}" onclick="chooseBenefit({{$item_benefit->id}})">
                                             <i class="{{ $item_benefit->logo }}" style="font-size:34px;"></i>
                                             <b>{{$item_benefit->name}}</b>
-                                            <b><p style="color:green">Rp. {{number_format($item_benefit->jumlah_biaya)}}</p></b>
+                                            <b>
+                                                <p style="color:green" class="mb-0">Biaya Penangangan : <br>Rp. {{number_format($item_benefit->jumlah_biaya)}}</p>
+                                                <font style="color:red" class="mt-0">Limit tersisa Rp. {{number_format( $item_benefit->jumlah_biaya - (App\Models\RequestClaim::where('employee_id',App\Models\Employee::where('users_id',auth()->user()->id)->first()->id)->where('product_profit_id',$item_benefit->id)->where('status','Approve')->count() > 0 ? App\Models\RequestClaim::where('employee_id',App\Models\Employee::where('users_id',auth()->user()->id)->first()->id)->where('product_profit_id',$item_benefit->id)->where('status','Approve')->first()->jumlah_claim : 0))}}</font>
+                                            </b>
                                        </div>
                                     </div>
                                     @endforeach
@@ -99,6 +108,7 @@
                             <th style="min-width:250px">Akun Bank</th>
                             <th style="min-width:250px">Nama Claim Benefit</th>
                             <th style="min-width:250px">Tanggal Request</th>
+                            <th style="min-width:250px">Jumlah Claim</th>
                             <th style="min-width:150px">Kwitansi</th>
                             <th style="min-width:250px">Status Claim Anda</th>
                             <th>Action</th>
@@ -111,6 +121,7 @@
                                 <td>{{ $item->no_rekening }} / {{ $item->name_bank }} ({{ $item->bank }})</td>
                                 <td>{{ $item->productBenefit->name }}</td>
                                 <td>{{ date('d F Y',strtotime($item->tanggal)) }}</td>
+                                <td>Rp. {{ number_format($item->jumlah_claim) }}</td>
                                 <td><button class="btn btn-warning" onclick="viewKwitansi('{{ $item->kwitansi }}')" data-toggle="modal" data-target="#staticBackdrop">View Kwitnasi</button></td>
                                 <td>{{ $item->status }}</td>
                                 <td><button class="btn btn-warning">Detail</button></td>
@@ -165,6 +176,16 @@
     </script>
 @endif
 
+
+@if (session('gagal'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal',
+            text:  '{{ session("gagal") }}',
+        })
+    </script>
+@endif
 
 <script>
     $(document).ready( function () {
