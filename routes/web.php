@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PegawaiAsuransiController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\HRDController;
 use App\Http\Controllers\EmployeeController;
@@ -49,6 +50,14 @@ Route::prefix('/admin')->group(function () {
             Route::get('/admin/edit/{id}', [AdminController::class, 'edit'])->name('admin.admin.edit');
             Route::get('/admin/delete/{id}', [AdminController::class, 'delete'])->name('admin.admin.delete');
 
+            //pegawai-asuransi
+            Route::get('/pegawai-asuransi', [PegawaiAsuransiController::class, 'index'])->name('admin.pegawai-asuransi');
+            Route::get('/pegawai-asuransi/form', [PegawaiAsuransiController::class, 'add'])->name('admin.pegawai-asuransi.add');
+            Route::post('/pegawai-asuransi/store', [PegawaiAsuransiController::class, 'store'])->name('admin.pegawai-asuransi.store');
+            Route::put('/pegawai-asuransi/update/{id}', [PegawaiAsuransiController::class, 'update'])->name('admin.pegawai-asuransi.update');
+            Route::get('/pegawai-asuransi/edit/{id}', [PegawaiAsuransiController::class, 'edit'])->name('admin.pegawai-asuransi.edit');
+            Route::get('/pegawai-asuransi/delete/{id}', [PegawaiAsuransiController::class, 'delete'])->name('admin.pegawai-asuransi.delete');
+
             //role
             Route::get('/role', [RoleController::class, 'index'])->name('admin.role');
             Route::get('/role/form', [RoleController::class, 'add'])->name('admin.role.add');
@@ -82,6 +91,10 @@ Route::prefix('/admin')->group(function () {
             Route::get('/product/benefit/edit/{id}', [ProductBenefitController::class, 'edit'])->name('admin.product_benefit.edit');
             Route::put('/product/benefit/update/{id}', [ProductBenefitController::class, 'update'])->name('admin.product_benefit.update');
 
+        });
+
+        Route::middleware('RolePegawaiAsuransi')->group(function (){
+            
             //paymentAdmin
             Route::get('/payment_list', [PaymentListController::class, 'index'])->name('admin.paymentlist');
             Route::get('/payment_list/edit/{id}/{status}/{bulan}', [PaymentListController::class, 'update'])->name('admin.paymentlist.update');

@@ -113,6 +113,9 @@
                     }else if (auth()->user()->role_id == '2') {
                         $dataUser = App\Models\HRD::where('users_id',auth()->user()->id)->first();
                         $role = App\Models\Role::where('id',auth()->user()->role_id)->first();
+                    }else if (auth()->user()->role_id == '4') {
+                        $dataUser = App\Models\PegawaiAsuransi::where('users_id',auth()->user()->id)->first();
+                        $role = App\Models\Role::where('id',auth()->user()->role_id)->first();
                     }else {
                         $dataUser = App\Models\Employee::where('users_id',auth()->user()->id)->first();
                         $role = App\Models\Role::where('id',auth()->user()->role_id)->first();
@@ -161,9 +164,11 @@
                 </li>
                 <li class=" nav-item @if(URL::current() == URL::to('/admin/admin')) active @elseif(URL::current() == URL::to('/admin/admin/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.admin')}}"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Admin">Admin</span></a>
                 </li>
-                <li class=" nav-item @if(URL::current() == URL::to('/admin/hrd')) active @elseif(URL::current() == URL::to('/admin/hrd/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.hrd')}}"><i data-feather="trello"></i><span class="menu-title text-truncate" data-i18n="HRD">HRD</span></a>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/pegawai-asuransi')) active @elseif(URL::current() == URL::to('/admin/pegawai-asuransi/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.pegawai-asuransi')}}"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Pegawai Asuransi">Pegawai Asuransi</span></a>
                 </li>
-                <li class=" nav-item @if(URL::current() == URL::to('/admin/employee')) active @elseif(URL::current() == URL::to('/admin/employee/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.employee')}}"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Karyawan">Karyawan</span></a>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/hrd')) active @elseif(URL::current() == URL::to('/admin/hrd/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.hrd')}}"><i data-feather="trello"></i><span class="menu-title text-truncate" data-i18n="Perusahaan Peserta Asuransi">Perusahaan Peserta Asuransi</span></a>
+                </li>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/employee')) active @elseif(URL::current() == URL::to('/admin/employee/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.employee')}}"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Peserta Asuransi">Peserta Asuransi</span></a>
                 </li>
 
                 <li class=" navigation-header"><span data-i18n="Product Management">Product Management</span><i data-feather="more-horizontal"></i>
@@ -171,7 +176,7 @@
                 <li class=" nav-item @if(URL::current() == URL::to('/admin/product')) active @elseif(URL::current() == URL::to('/admin/product/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.product')}}"><i data-feather="box"></i><span class="menu-title text-truncate" data-i18n="Asuransi">Asuransi</span></a>
                 </li>
                 
-                <li class=" nav-item @if(URL::current() == URL::to('/admin/close-insurance-request')) active @elseif(URL::current() == URL::to('/admin/close-insurance-request/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.close_insurance_req')}}"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Permintaan Penutupan Polis">Permintaan Penutupan Polis</span></a>
+                {{-- <li class=" nav-item @if(URL::current() == URL::to('/admin/close-insurance-request')) active @elseif(URL::current() == URL::to('/admin/close-insurance-request/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.close_insurance_req')}}"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Permintaan Penutupan Polis">Permintaan Penutupan Polis</span></a>
                 </li>
 
                 <li class=" navigation-header"><span data-i18n="Payment Management">Payment Management</span><i data-feather="more-horizontal"></i>
@@ -181,16 +186,29 @@
 
                 <li class=" navigation-header"><span data-i18n="Claim Management">Claim Management</span><i data-feather="more-horizontal"></i>
                 <li class=" nav-item @if(URL::current() == URL::to('/admin/claim-request-list')) active @elseif(URL::current() == URL::to('/admin/claim-request-list/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.claim_request_list')}}"><i data-feather="credit-card"></i><span class="menu-title text-truncate" data-i18n="Claim Request">Claim Request</span></a>
-                </li>
+                </li> --}}
 
                 @elseif (auth()->user()->role_id == '2')
                 <li class=" navigation-header"><span data-i18n="Polis Management">Polis Management</span><i data-feather="more-horizontal"></i>
                 </li>
-                <li class=" nav-item @if(URL::current() == URL::to('/admin/employee')) active @elseif(URL::current() == URL::to('/admin/employee/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.employee')}}"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Karyawan">Karyawan</span></a>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/employee')) active @elseif(URL::current() == URL::to('/admin/employee/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.employee')}}"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Pegawai Asuransi">Pegawai Asuransi</span></a>
                 </li>
                 <li class=" nav-item @if(URL::current() == URL::to('/admin/payment_page')) active @elseif(URL::current() == URL::to('/admin/payment_page/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.payment')}}"><i data-feather="dollar-sign"></i><span class="menu-title text-truncate" data-i18n="Pembayaran Polis">Pembayaran Polis</span></a>
                 </li>
-                <li class=" nav-item "><a class="d-flex align-items-center shadow-none" href="#"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Laporan Klaim">Laporan Klaim</span></a>
+                {{-- <li class=" nav-item "><a class="d-flex align-items-center shadow-none" href="#"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Laporan Klaim">Laporan Klaim</span></a>
+                </li> --}}
+
+
+                @elseif (auth()->user()->role_id == '4')
+                
+                <li class=" navigation-header"><span data-i18n="Menu">Menu</span><i data-feather="more-horizontal"></i>
+                </li>
+                
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/close-insurance-request')) active @elseif(URL::current() == URL::to('/admin/close-insurance-request/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.close_insurance_req')}}"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Permintaan Penutupan Polis">Permintaan Penutupan Polis</span></a>
+                </li>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/payment_list')) active @elseif(URL::current() == URL::to('/admin/payment_list/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.paymentlist')}}"><i data-feather="dollar-sign"></i><span class="menu-title text-truncate" data-i18n="Payment List">Payment List</span></a>
+                </li>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/claim-request-list')) active @elseif(URL::current() == URL::to('/admin/claim-request-list/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.claim_request_list')}}"><i data-feather="credit-card"></i><span class="menu-title text-truncate" data-i18n="Claim Request">Claim Request</span></a>
                 </li>
 
                 @else

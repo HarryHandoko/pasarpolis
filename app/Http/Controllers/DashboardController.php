@@ -17,6 +17,8 @@ class DashboardController extends Controller
     {
         if(Auth::user()->role_id == '1'){
             return view('dashboard.index');
+        }else if(Auth::user()->role_id == '4'){
+            return view('dashboard.index');
         }else if(Auth::user()->role_id == '2'){
             $data['totalPremis'] = DB::table('employee_products')->select(DB::raw('sum(products.premi) as premi'))
             ->join('products','products.id','employee_products.products_id')

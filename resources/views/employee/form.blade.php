@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="card p-2">
-    <h4>Form Karyawan</h4>
+    <h4>Form Peserta Asuransi</h4>
     <hr>
 
     @if ($errors->any())

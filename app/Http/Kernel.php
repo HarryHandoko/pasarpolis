@@ -58,6 +58,7 @@ class Kernel extends HttpKernel
         'logout' => \App\Http\Middleware\Logout::class,
         'RoleAdmin' => \App\Http\Middleware\RoleAdmin::class,
         'RoleAdminHRD' => \App\Http\Middleware\RoleAdminHRD::class,
+        'RolePegawaiAsuransi' => \App\Http\Middleware\RolePegawaiAsuransi::class,
         'RoleHRD' => \App\Http\Middleware\RoleHRD::class,
         'RoleEmployee' => \App\Http\Middleware\RoleEmployee::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

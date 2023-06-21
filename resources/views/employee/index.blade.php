@@ -4,7 +4,7 @@
 <div class="card bg-white pt-2 pb-2">
     <x-table>
         <x-slot name="title">
-            Karyawan
+            Peserta Asuransi
         </x-slot>
         <x-slot name="urlAdd">{{ route('admin.employee.add') }}</x-slot>
         <x-slot name="thead">

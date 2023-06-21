@@ -31,7 +31,7 @@
                                    </b>
                                 </h3>
                                 <h5>
-                                   Total Karyawan Terasuransi
+                                   Total Pegawai Asuransi
                                 </h5>
                                 <h3 style="color:black" class="mb-0">
                                     <b>{{ number_format($totalEmp) }}</b> Jiwa

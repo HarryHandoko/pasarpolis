@@ -4,16 +4,14 @@
 <div class="card bg-white pt-2 pb-2">
     <x-table>
         <x-slot name="title">
-            Perusahaan Peserta Asuransi
+            Pegawai Asuransi
         </x-slot>
-        <x-slot name="urlAdd">{{ route('admin.hrd.add') }}</x-slot>
+        <x-slot name="urlAdd">{{ route('admin.pegawai-asuransi.add') }}</x-slot>
         <x-slot name="thead">
             <tr>
                 <th style="max-width: 10px">#</th>
                 <th>Nama</th>
-                <th>No Telepon</th>
-                <th>Office</th>
-                <th>Status Akun</th>
+                <th>No Handphone</th>
                 <th style="max-width: 40px">Actions</th>
             </tr>
         </x-slot>
@@ -22,18 +20,13 @@
                     <tr>
                         <td>{{ $key+1 }}</td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->no_telepon }}</td>
-                        <td>{{ $item->office_name }}</td>
-                        <td>{{ $item->status }}</td>
+                        <td>{{ $item->no_handphone }}</td>
                         <td>
                             <div class="input-group-append">
                                 <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
                                 <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ route('admin.hrd.edit',$item->id) }}" ><i data-feather="eye"></i> Lihat Detail</a>
+                                <a class="dropdown-item" href="{{ route('admin.pegawai-asuransi.edit',$item->id) }}" ><i data-feather="eye"></i> Lihat Detail</a>
                                 <a class="dropdown-item" href="#" onclick="deletes({{ $item->id }})" ><i data-feather="trash"></i> Hapus</a>
-                                <hr>
-                                <a class="dropdown-item" href="#" onclick="statusPembayaran({{ $item->id }},'Aktif')" ><i data-feather="check"></i> Aktif</a>
-                                <a class="dropdown-item" href="#" onclick="statusPembayaran({{ $item->id }},'Tidak Aktif')" ><i data-feather="x"></i> Tidak Aktif</a>
                             </div>
                         </td>
                     </tr>   
@@ -69,36 +62,12 @@
                 cancelButtonText: 'Batal',
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    var url = '{{ route("admin.hrd.delete", ":id") }}';
+                    var url = '{{ route("admin.pegawai-asuransi.delete", ":id") }}';
                     url = url.replace(':id', id);
                     window.location=url;
                 }
             })
         }
 </script>
-
-
-<script>
-    function statusPembayaran(id,status) {
-        Swal.fire({
-            title: 'Apakah anda Me-'+status+' Data Ini ?',
-            text: "Menghapus data bersifat permanent hati-hati!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Hapus!',
-            cancelButtonText: 'Batal',
-            }).then((result) => {
-            if (result.isConfirmed) {
-                var url = '{{ route("admin.hrd.updateStatus", ["id"=>":id","status"=>":status"]) }}';
-                url = url.replace(':id', id);
-                url = url.replace(':status', status);
-                window.location=url;
-            }
-        })
-    }
-</script>
-    
     
 @endpush
