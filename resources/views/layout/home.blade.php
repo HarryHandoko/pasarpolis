@@ -204,11 +204,13 @@
                 <li class=" navigation-header"><span data-i18n="Menu">Menu</span><i data-feather="more-horizontal"></i>
                 </li>
                 
-                <li class=" nav-item @if(URL::current() == URL::to('/admin/close-insurance-request')) active @elseif(URL::current() == URL::to('/admin/close-insurance-request/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.close_insurance_req')}}"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Permintaan Penutupan Polis">Permintaan Penutupan Polis</span></a>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/claim-request-list')) active @elseif(URL::current() == URL::to('/admin/claim-request-list/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.claim_request_list')}}"><i data-feather="credit-card"></i><span class="menu-title text-truncate" data-i18n="Claim Request">Claim Request</span></a>
                 </li>
                 <li class=" nav-item @if(URL::current() == URL::to('/admin/payment_list')) active @elseif(URL::current() == URL::to('/admin/payment_list/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.paymentlist')}}"><i data-feather="dollar-sign"></i><span class="menu-title text-truncate" data-i18n="Payment List">Payment List</span></a>
                 </li>
-                <li class=" nav-item @if(URL::current() == URL::to('/admin/claim-request-list')) active @elseif(URL::current() == URL::to('/admin/claim-request-list/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.claim_request_list')}}"><i data-feather="credit-card"></i><span class="menu-title text-truncate" data-i18n="Claim Request">Claim Request</span></a>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/laporan-klaim')) active @elseif(URL::current() == URL::to('/admin/laporan-klaim/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.laporan_klaim')}}"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Laporan Klaim">Laporan Klaim</span></a>
+                </li>
+                <li class=" nav-item @if(URL::current() == URL::to('/admin/close-insurance-request')) active @elseif(URL::current() == URL::to('/admin/close-insurance-request/form')) active @endif"><a class="d-flex align-items-center shadow-none" href="{{route('admin.close_insurance_req')}}"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Permintaan Penutupan Polis">Permintaan Penutupan Polis</span></a>
                 </li>
 
                 @else

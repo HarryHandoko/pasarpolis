@@ -72,7 +72,7 @@
             <div class="col-8">
                 <div class="card shadow p-5" style="border-radius:20px">
                     <div class="row mb-5 text-center">
-                        <div class="col"><h4 style="font-family:'Mulish', sans-serif;" class="text-warning">Register</h4></div>
+                        <div class="col"><h4 style="font-family:'Mulish', sans-serif;" class="text-warning">Register Perusahaan Peserta Asuransi </h4></div>
                     </div>
                     <div class="row" id="register">
                         <div class="col">

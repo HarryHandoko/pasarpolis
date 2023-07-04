@@ -15,6 +15,7 @@ use App\Http\Controllers\PaymentListController;
 use App\Http\Controllers\ClaimController;
 use App\Http\Controllers\ClaimAdminController;
 use App\Http\Controllers\CloseInsuranceRequestController;
+use App\Http\Controllers\LaporanKlaimController;
 use App\Http\Controllers\Website\HomesController;
 use App\Http\Controllers\Website\SignUpController;
 
@@ -107,6 +108,10 @@ Route::prefix('/admin')->group(function () {
             //CloseInsuranceRequest
             Route::get('/close-insurance-request', [CloseInsuranceRequestController::class, 'index'])->name('admin.close_insurance_req');
             Route::get('/close-insurance-request/edit/{id}/{status}', [CloseInsuranceRequestController::class, 'update'])->name('admin.close_insurance_req.update');
+
+            //Laporan Klaim
+            Route::get('/laporan-klaim', [LaporanKlaimController::class, 'index'])->name('admin.laporan_klaim');
+            Route::post('/laporan-klaim/print', [LaporanKlaimController::class, 'print'])->name('admin.laporan_klaim.print');
         });
 
         Route::middleware('RoleAdminHRD')->group(function () {
